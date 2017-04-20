@@ -35,6 +35,7 @@ var userSchema = Schema({
 userSchema.plugin(unique_val);
 
 
+
 userSchema.statics.save_user = function(req, cb) {
     var pwd = req.body.password;
 
@@ -50,6 +51,9 @@ userSchema.statics.save_user = function(req, cb) {
     //     else
     //         cb(null, "Saved");
     // });
+
+
+
     user_Detail.save(cb);
 };
 function encrypt_data(pwd) {
@@ -64,6 +68,19 @@ var encPass =encrypt_data(req.password)
         email: req.email,
         password:encPass
     }, cb);
+}
+userSchema.statics.profile=function(req,cb){
+    console.log("hjgsdf");
+  this.findOne({_id:req._id},cb);
+  //{
+ //   if(user){
+ //       res.send({"user_detail":user});
+ //
+ //   }
+ //   else{
+ //     res.send({message:"error"});
+ //   }
+ // })
 }
 
 var User = mongoose.model('User', userSchema);

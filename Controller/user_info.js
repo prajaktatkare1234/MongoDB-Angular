@@ -3,16 +3,17 @@ router=express.Router();
 var User = require('../Model/index.js');
 router.post('/',function(req,res){
 
-  User.findById(req.decode._id,function(err,user){
-    if(user){
-        res.send({"user_detail":user});
+  User.profile(req.decode,function(err,data){
+    if(data)
+    {
+      res.send({"user_data":data})
+    }
+    else
+    {
+      res.send({message:"err"})
+    }
 
-    }
-    else{
-      res.send({message:"error"});
-    }
   })
-
 
 });
 module.exports=router;
