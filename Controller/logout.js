@@ -3,7 +3,7 @@ router=express.Router();
 router.post('/',function(req,res){
   // console.log(req.decode);
   res.clearCookie('cookie');
-  res.send({"message":"logged out"});
+  res.send({"status":false,"message":"logged out"});
 
 
 

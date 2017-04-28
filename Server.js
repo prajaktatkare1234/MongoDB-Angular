@@ -8,6 +8,7 @@ var p = process.env.PORT || 8081
 // app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static('./public'));
 app.use(validator());
 app.use(require('./Controller'));
 var server = app.listen(p, function() {

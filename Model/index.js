@@ -15,7 +15,7 @@ var userSchema = Schema({
         type: String,
         required: true,
         validate: validators.isAlpha(),
-        minlength: 3,
+        minlength: 2,
         maxlength: 8
     },
     email: {

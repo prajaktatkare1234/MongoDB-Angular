@@ -7,6 +7,7 @@ console.log("in controller");
 
 
 router.post('/', function(req, res) {
+  console.log("request",req.body.password);
   var result1 = {};
  result1.status = false;
  try{

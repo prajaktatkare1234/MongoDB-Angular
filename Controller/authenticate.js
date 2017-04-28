@@ -5,7 +5,20 @@ var jwt = require("jsonwebtoken");
 var config = require("../Config/config.js");
 
 router.use(function(req, res, next) {
-    var token = req.headers['x-access-token'];
+    var token = req.headers.cookie;
+console.log(req.headers.cookie);
+    try{
+      console.log(token);
+      token=token.substr(7);
+
+    }
+    catch(e){
+      return res.json({
+        "success":false,
+        "message":"login please"
+      })
+
+    }
 
     if (token) {
         console.log("auth", token,config.secret);

@@ -23,7 +23,7 @@ var errorDefined={"validationSchema":{
             errorMessage: 'name field is require & cannot be blank.'
         },
         matches:{
-          options:[/[a-zA-Z]{2,15}$/],
+          options:[/[a-zA-Z]{2,}$/],
           errorMessage:'name must have min 2 and max 15 characters'
         }
 
