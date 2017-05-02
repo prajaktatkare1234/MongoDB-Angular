@@ -1,9 +1,6 @@
     var flag=0;
     $(document).ready(function() {
-
         get_card();
-
-
         $('body').on("click", "#logout", (function() {
             $.ajax({
                 url: "http://localhost:8081/logout",
@@ -21,8 +18,6 @@
                 },
             });
         }));
-
-
 
 
         $('body').on("click", "#done", (function() {
@@ -106,11 +101,7 @@
             get_card();
 
         }));
-        // $(document).on('click', "#ref", (function() {
-        //     // $("#list_cards").toggle();
-        //   location.reload();
-        // }));
-
+      
 
     });
 
@@ -125,29 +116,24 @@
                 var i = response.data_info.length - 1;
                 console.log(i);
 
-                $("#cards").empty();
-                  $("#list_cards").empty();
+                $("#cards").css("height","2px");
+                  $("#cards").empty();
+                          $("#list_cards").empty();
+                  // $("#list_cards").val("");
 
 
                 localStorage.setItem('type',"list_v");
+                $("#title").val("");
+                $("#take_note").val("");
+
                 for (var x = i; x >= 0; x--) {
 
                     data_title = response.data_info[x].title;
                     data_note = response.data_info[x].take_note;
-                    data_title = response.data_info[x].title;
-                    data_note = response.data_info[x].take_note;
-                    var node = document.getElementById("list_cards")
-                    var innerbox = document.createElement("div");
-                    innerbox.setAttribute("id", "innerbox");
-                    var title = document.createElement("pre");
-                    title.setAttribute("id", "div3a");
-                    title.append(data_title);
-                    innerbox.append(title);
-                    var note = document.createElement("pre");
-                    note.setAttribute("id", "div3b");
-                    note.append(data_note);
-                    innerbox.append(note);
-                    node.appendChild(innerbox);
+
+
+                    var div=$("<pre id='innerbox1'>"+data_title+"<br>"+data_note+"</pre>")
+                    $("#list_cards").append(div);
 
                 }
 
@@ -169,6 +155,9 @@
             success: function(response) {
                 var i = response.data_info.length - 1;
                 console.log(i);
+
+                $("#title").val("");
+                $("#take_note").val("");
                 for (var x = i; x >= 0; x--) {
 
                     data_title = response.data_info[x].title;
@@ -203,25 +192,11 @@
     function division() {
 
 
-        var node = document.getElementById("cards")
-        // var outerbox = document.createElement("div");
-        // outerbox.setAttribute("id", "outerbox")
-        // outerbox.setAttribute("class", "col-sm-3");
-        var innerbox = document.createElement("div");
-        innerbox.setAttribute("id", "innerbox");
-        innerbox.setAttribute("class", "col-sm-3");
-        var title = document.createElement("pre");
-        title.setAttribute("id", "div3a");
-        title.append(data_title);
-        // outerbox.appendChild(innerbox);
-        innerbox.append(title);
-        var note = document.createElement("pre");
-        note.setAttribute("id", "div3b");
-        note.append(data_note);
-        innerbox.append(note);
-        node.appendChild(innerbox);
+        var div=$("<pre id='innerbox' class='col-sm-3' >"+data_title+"<br>"+data_note+"</pre>")
+        $("#cards").append(div);
+
         var elem = document.querySelector('#cards');
-      var pckry = new Packery( elem, {
+        var pckry = new Packery( elem, {
         // options
         itemSelector: '#innerbox',
         gutter: 10

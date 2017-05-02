@@ -13,10 +13,16 @@
 
 
     <script>
-        $(document.body).on('click', "#menu", (function(e) {
+
+        $(document).on('click', "#menu", (function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         }));
+    //     $('#n1').click('li.a', function() {
+    //     $('#n1').collapse('hide');
+    // });
+
+
     </script>
 </head>
 
@@ -33,7 +39,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a id="menu" href="#">
-                    <!-- </a> -->
+
                     <a class="navbar-brand" href="#menu" id="menu"><img src="image/menu.png"></img>
                     </a>
                     <a id="home" class="active" href="#home">Google Keep</a>
@@ -43,19 +49,18 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a id="refresh" href="#"><img id="ref" src="/image/ref.png"></img>
+                        <a id="refresh"><img id="ref" src="/image/ref.png"></img>
                         </a>
-                        <!-- </img>
-                        </a -->
+
                     </li>
                     <li>
-                        <a href="#"><img id="list" src="image/list.png"></img>
+                        <a ><img id="list" src="image/list.png"></img>
                         </a>
-                        <a href="#"> <img id="grid" src="image/grid.png"></img>
+                        <a > <img id="grid" src="image/grid.png"></img>
                         </a>
                     </li>
                     <li>
-                        <a id="logout" href="#"><img id="l" src="image/logout.png"></img>
+                        <a id="logout"><img id="l" src="image/logout.png"></img>
                         </a>
                     </li>
                 </ul>
@@ -64,21 +69,21 @@
     </nav>
 
     <div id="wrapper" class="toggled">
-        <div class="container-fluid">
-            <!-- Sidebar -->
+        <div class="container-fluid" >
+
             <div id="sidebar-wrapper">
                 <ul class="sidebar-nav">
                     <li class="sidebar-brand">
                         <br>
                     </li>
                     <li class="sidebar-brand">
-                        <a href="#"><img src="image/note.png"></img>&nbsp&nbsp&nbspNotes</a>
+                        <a><img src="image/note.png"></img>&nbsp&nbsp&nbspNotes</a>
                     </li>
                     <li class="sidebar-brand">
-                        <a href="#"><img src="image/remainder.png" id="remainder"></img>&nbsp&nbsp&nbspRemainder</a>
+                        <a><img src="image/remainder.png" id="remainder"></img>&nbsp&nbsp&nbspRemainder</a>
                     </li>
                     <li class="sidebar-brand">
-                        <a href="#"><img src="image/archive.png" id="archive"></img>&nbsp&nbsp&nbsp&nbspArchive</a>
+                        <a><img src="image/archive.png" id="archive"></img>&nbsp&nbsp&nbsp&nbspArchive</a>
                     </li>
                 </ul>
             </div>
@@ -97,12 +102,10 @@
 
                             <div id="div1">
 
-                                <!-- <div id="p1" data-placeholder="Note">Note </div> -->
+
                                 <input type="text" placeholder="Take a note" id="p1"></input>
                             </div>
-                            <!-- <div contenteditable id="title"></div> -->
-                            <!-- <div contenteditable data-placeholder="take a note" id="take_note">
-                            </div> -->
+
                             <div id="div2">
                                 <textarea placeholder="Title" id="title"></textarea><br>
                                 <textarea placeholder="Take a note" id="take_note"></textarea>
@@ -112,19 +115,18 @@
                         </div>
                     </div><br><br><br>
 
-                    <div id="cards" class="row">
+                    <div id="cards" class="row" >
 
                     </div>
                     <div id="list_cards"class="row">
                     </div>
-                    <!-- </div> -->
+
 
                 </div>
             </div>
         </div>
 
     </div>
-
 
 
 </body>
