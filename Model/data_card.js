@@ -40,31 +40,23 @@ data_card_Schema.statics.update_data = function(req, cb) {
         d_no: req.d_no
     }, {
         $set: {
-            data: req.data
+            take_note: req.data
         }
     }, cb);
 };
-data_card_Schema.statics.delete_data = function(req, cb) {
-    console.log(req);
-    this.findOne({
-        d_no: req.d_no
-    }, function(err,data){
-      if(data){
-        this.remove({d_no:req.d_no}
-        ,function(err){
-          if(err){
-            cb("err","data not deleted");
-            return;
-          }
-          cb(null,"data deleted")
-        });
+data_card_Schema.statics.delete_data = function(data_id, cb) {
+    // console.log("req in delete",req);
+    // this.findOne({
+        // d_no: req.d_no
+    // }, function(err,data){
+      // if(data){
+        this.remove({_id:data_id},cb)
+        // }
+      // else{
+            // cb("err","data not deleted");
+      // }
 
-      }
-      else{
-            cb("err","data not deleted");
-      }
-
-    });
+    // });s
 };
 data_card_Schema.statics.get_data = function(req, cb) {
     console.log(req._id,"in get function");

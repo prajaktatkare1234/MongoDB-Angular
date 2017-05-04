@@ -4,25 +4,38 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../css/index.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script> -->
     <script src="../bower_components/packery/dist/packery.pkgd.min.js"></script>
+    <script src="../bower_components/draggabilly/dist/draggabilly.pkgd.min.js"></script>
 
     <script src="../js/aa.js"></script>
 
 
     <script>
-
+        var flag = 0;
         $(document).on('click', "#menu", (function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         }));
-    //     $('#n1').click('li.a', function() {
-    //     $('#n1').collapse('hide');
-    // });
+        $('#navbar').click('li.a', function() {
+            $('#navbar').collapse('hide');
+        });
+        $(document).on('click', "#b1", (function(e) {
+            e.preventDefault();
 
 
+            if (flag % 2 == 0) {
+                $("#r1").css("margin-top", "150px");
+                  // $("#sidebar-wrapper").css("width","0px");
+            } else {
+                $("#r1").css("margin-top", "0px");
+                  // $("#sidebar-wrapper").show();
+                  // $("#sidebar-wrapper").css("width","250px");
+            }
+            flag++;
+        }));
     </script>
 </head>
 
@@ -32,20 +45,22 @@
     <nav id="n1" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> -->
+                <button id="b1" type="button" class="navbar-toggle " data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a id="menu" href="#">
+                <!-- <a id="menu" href="#"> -->
 
-                    <a class="navbar-brand" href="#menu" id="menu"><img src="image/menu.png"></img>
-                    </a>
-                    <a id="home" class="active" href="#home">Google Keep</a>
-                    <input type="text" id="search" placeholder="search"></input>
+                <a class="navbar-brand" href="#" id="menu"><img src="image/menu.png"></img>
+                </a>
+                <a id="home" class="active" href="#home">Google Keep</a>
+                <input type="text" id="search" placeholder="search"></input>
 
             </div>
+            <!-- <div id="navbar"  class="collapse navbar-collapse navbar-ex1-collapse"> -->
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -54,10 +69,11 @@
 
                     </li>
                     <li>
-                        <a ><img id="list" src="image/list.png"></img>
+                        <a><img id="list" src="image/list.png"><img id="grid" src="image/grid.png"></img>
+                            </img>
                         </a>
-                        <a > <img id="grid" src="image/grid.png"></img>
-                        </a>
+                        <!-- <a >
+                        </a> -->
                     </li>
                     <li>
                         <a id="logout"><img id="l" src="image/logout.png"></img>
@@ -69,7 +85,7 @@
     </nav>
 
     <div id="wrapper" class="toggled">
-        <div class="container-fluid" >
+        <div class="container-fluid">
 
             <div id="sidebar-wrapper">
                 <ul class="sidebar-nav">
@@ -89,36 +105,37 @@
             </div>
 
             <div id="page-content-wrapper">
-                <div class="container-fluid">
+                <div class="container-fluid" id="r1">
                     <div class="row">
                         <div class="col-lg-12">
-                            <br><br><br><br><br>
+                            <br><br><br><br>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-3">
+                        <!-- <div class="col-sm-3"> -->
+                        <!-- </div> -->
+                        <!-- <div class="col-sm-6"> -->
+
+                        <div id="div1">
+
+
+                            <input type="text" placeholder="Take a note" id="p1"></input>
                         </div>
-                        <div class="col-sm-6">
 
-                            <div id="div1">
-
-
-                                <input type="text" placeholder="Take a note" id="p1"></input>
-                            </div>
-
-                            <div id="div2">
-                                <textarea placeholder="Title" id="title"></textarea><br>
-                                <textarea placeholder="Take a note" id="take_note"></textarea>
-                                <div><a id="done">Done</a></div>
-                            </div>
-
+                        <div id="div2">
+                            <textarea placeholder="Title" id="title"></textarea><br>
+                            <textarea placeholder="Take a note" id="take_note"></textarea>
+                            <div><a id="done">Done</a></div>
                         </div>
+
+                        <!-- </div> -->
                     </div><br><br><br>
 
-                    <div id="cards" class="row" >
+                    <div id="cards" class="row">
+
 
                     </div>
-                    <div id="list_cards"class="row">
+                    <div id="list_cards" class="row">
                     </div>
 
 

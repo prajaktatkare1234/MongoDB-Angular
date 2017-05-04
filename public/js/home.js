@@ -193,7 +193,10 @@ $(document).ready(function() {
 
     }));
 
+    $('#links').click('li.a', function() {
 
+    $('#links').collapse('hide');
+  });
 
 
 });
