@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../Model/data_card.js');
-// console.log("in controller");
+// console.log("in get card");
 
 router.post('/:id', function(req, res) {
     var data_id=req.params.id;
-    console.log("req from front",req.body);
-    User.update_data(data_id,req.body, function(err, result) {
+    console.log("asfsadf",data_id);
+    User.card_notes(data_id, function(err, result) {
 
 
       if(err){

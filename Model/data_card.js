@@ -34,15 +34,21 @@ data_card_Schema.statics.save_data = function(req,d_no, cb) {
 
     data_card_detail.save(cb);
 };
-data_card_Schema.statics.update_data = function(req, cb) {
-    console.log(req);
+data_card_Schema.statics.update_data = function(data_id,req,cb) {
+ 
     this.update({
-        d_no: req.d_no
+        _id: req._id
     }, {
         $set: {
-            take_note: req.data
+            take_note: req.take_note,
+            title:req.title
         }
     }, cb);
+};
+data_card_Schema.statics.card_notes = function(data_id, cb) {
+    // console.log(req);
+    this.find({_id:data_id},cb);
+
 };
 data_card_Schema.statics.delete_data = function(data_id, cb) {
     // console.log("req in delete",req);

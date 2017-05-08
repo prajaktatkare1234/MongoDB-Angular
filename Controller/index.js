@@ -9,6 +9,7 @@ router.use('/data_card',require('./authenticate'),require('./data_card'));
 router.use('/get_data_card',require('./authenticate'),require('./get_data_card'));
 router.use('/update_data_card',require('./update_data_card'));
 router.use('/delete_data_card',require('./delete_data_card'));
+router.use('/get_card_notes',require('./get_card_notes'));
 
 
 

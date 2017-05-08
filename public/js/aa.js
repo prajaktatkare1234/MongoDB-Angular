@@ -111,6 +111,9 @@ $(document).ready(function() {
         get_card();
     }));
 
+
+
+
 });
 
 
@@ -147,26 +150,35 @@ function get_card() {
 }
 
 
-function list_view(data_id) {
-    $("#cards").css("height", "2px");
-    var div = $("<pre id='innerbox1' >" + data_title + "<br>" + data_note + "<br><a onclick=delete_card('" + data_id + "') id='delete'>" + 'delete' + "</a></pre>")
-    $("#list_cards").append(div);
-}
 
 
 function division(data_id) {
-    var div = $("<pre id='innerbox' class='col-sm-3' >" + data_title + "<br>" + data_note + "<br><a onclick=delete_card('" + data_id + "') id='delete'>" + 'delete' + "</a></pre>")
+    var div = $("<pre id='innerbox' class='col-sm-3' ><div id='title_div' onclick=pop('" + data_id + "') data-toggle='modal' data-target='#myModal'>" + data_title + "</div><div  id='note_div' onclick=pop('" + data_id + "') data-toggle='modal' data-target='#myModal'>" + data_note + "</div><div><a onclick=delete_card('" + data_id + "') id='delete'>" + 'delete' + "</a></div></pre>")
+
     $("#cards").append(div);
+
+
+
     var elem = document.querySelector('#cards');
     var pckry = new Packery(elem, {
         itemSelector: '#innerbox',
         gutter: 10
     });
     pckry.getItemElements().forEach(function(itemElem) {
+
         var draggie = new Draggabilly(itemElem);
         pckry.bindDraggabillyEvents(draggie);
+
     });
+
 }
+
+function list_view(data_id) {
+    $("#cards").css("height", "2px");
+    var div = $("<pre id='innerbox1'><div id='title_div' onclick=pop('" + data_id + "') data-toggle='modal' data-target='#myModal' >" + data_title + "</div><div id='note_div' onclick=pop('" + data_id + "') data-toggle='modal' data-target='#myModal'>" + data_note + "</div><div><a onclick=delete_card('" + data_id + "') id='delete'>" + 'delete' + "</a></div></pre>")
+    $("#list_cards").append(div);
+}
+
 
 
 var delete_card = function(data_id) {
@@ -200,5 +212,53 @@ function index() {
             console.log("the request is complete!");
         },
 
+    });
+}
+
+var pop = function(data_id) {
+    $.ajax({
+        url: "http://localhost:8081/get_card_notes/" + data_id + "",
+        type: "POST",
+        success: function(response) {
+            // console.log(response.message[0].take_note);
+            $('.modal-title').text(response.message[0].title);
+            $('#para').text(response.message[0].take_note);
+            $(document).ready(function() {
+                $(document).on('click', "#update", (function() {
+                    title = $('.modal-title').html();
+                    note = $('#para').html();
+                    console.log("title", title);
+                    update_card(data_id, title, note);
+                }));
+
+            });
+            get_card();
+
+        },
+        complete: function(xhr, status) {
+            console.log("the request is complete!");
+        },
+    });
+}
+var update_card = function(data_id, title, note) {
+    console.log(obj);
+    var obj = {
+        _id: data_id,
+        title: title,
+        take_note: note
+    }
+    console.log(obj);
+    $.ajax({
+        url: "http://localhost:8081/update_data_card/" + data_id + "",
+        type: "POST",
+        data: obj,
+        success: function(response) {
+            console.log(response);
+            // $("#cards").empty();
+            get_card();
+        },
+        complete: function(xhr, status) {
+            console.log("the request is complete!");
+        },
     });
 }
