@@ -35,7 +35,7 @@ data_card_Schema.statics.save_data = function(req,d_no, cb) {
     data_card_detail.save(cb);
 };
 data_card_Schema.statics.update_data = function(data_id,req,cb) {
- 
+
     this.update({
         _id: req._id
     }, {
@@ -45,24 +45,35 @@ data_card_Schema.statics.update_data = function(data_id,req,cb) {
         }
     }, cb);
 };
+// data_card_Schema.statics.update_data = function(data_id,req,cb) {
+//     // console.log("asd",bodyData);
+//     // if (bodyData.title == undefined && bodyData.content == undefined) {
+//     //     cb("input undefine", null);
+//     //     return;
+//     // }
+//     this.findById(data_id, function(err, user) {
+//         console.log(req.title);
+//         if (user) {
+//             console.log(user);
+//             title = req.title;
+//             take_note = req.take_note;
+//             user.save(cb);
+//         } else {
+//             cb('cant update', err);
+//         }
+//     });
+// };
+
 data_card_Schema.statics.card_notes = function(data_id, cb) {
     // console.log(req);
     this.find({_id:data_id},cb);
 
 };
 data_card_Schema.statics.delete_data = function(data_id, cb) {
-    // console.log("req in delete",req);
-    // this.findOne({
-        // d_no: req.d_no
-    // }, function(err,data){
-      // if(data){
-        this.remove({_id:data_id},cb)
-        // }
-      // else{
-            // cb("err","data not deleted");
-      // }
 
-    // });s
+
+        this.remove({_id:data_id},cb)
+
 };
 data_card_Schema.statics.get_data = function(req, cb) {
     console.log(req._id,"in get function");

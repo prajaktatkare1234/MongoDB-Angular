@@ -10,7 +10,8 @@ console.log("req.decode",req.decode);
 
     if(result)
       {
-      console.log("in data_info",result);
+      console.log("in fdsgdfg",result);
+      
         res.send({"data_info":result,"status":true})
       }
       else

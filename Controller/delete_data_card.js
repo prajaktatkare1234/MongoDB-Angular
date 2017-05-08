@@ -26,40 +26,8 @@ router.post('/:id', function(req, res) {
       })
     }
 
-        // if (err) {
-        //
-        //     res.send({
-        //         "status": false,
-        //         "message": "data cant be deleted"
-        //
-        //     });
-        // } else {
-        //     if (result) {
-        //         console.log("r", result);
-        //
-        //
-        //
-        //         res.send({
-        //             "status": true,
-        //             "message": "data deleted Successfully",
-        //
-        //         })
-        //     } else {
-        //         res.send({
-        //             "status": false,
-        //             "message": "deletion failed"
-        //
-        //         });
-        //
-        //     }
-        // }
-        //
-
-    });
-
   });
-
-
+});
 
 
 

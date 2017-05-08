@@ -46,6 +46,7 @@ img {
 #n1 {
     color: #fb0;
     /*height:30px;*/
+        border: none;
 }
 
 #menu {
@@ -192,9 +193,9 @@ img {
   width:100%;
 }
 #div1 {
-/*width: 35%;*/
-width:42%;
-margin-left: 260px;
+    /*width: 35%;*/
+    width:42%;
+    margin-left: 260px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.2);
     /*margin-left: 90px;*/
     /*box-shadow: 0 1px 1px;*/
@@ -322,8 +323,7 @@ margin-left: 260px;
 }
 #list_cards{
   width: 100%;
-      margin-left: -108px;
-
+  margin-left: -108px;
 }
 
 #innerbox,#innerbox1{

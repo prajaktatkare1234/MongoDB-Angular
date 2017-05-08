@@ -73,7 +73,7 @@ $(document).ready(function() {
 
 
     $('body').click(function(event) {
-        // console.log(event);
+        console.log(event);
         if (event.target.id == "take_note" || event.target.id == "title") {
             return;
         }
@@ -110,6 +110,12 @@ $(document).ready(function() {
         localStorage.setItem("type", "grid_view");
         get_card();
     }));
+    // $(document).on('click', "#update", (function() {
+    //     title = $('.modal-title').html();
+    //     note = $('#para').html();
+    //     console.log("title", title);
+    //     update_card(data_id, title, note);
+    // }));
 
 
 
@@ -162,7 +168,7 @@ function division(data_id) {
     var elem = document.querySelector('#cards');
     var pckry = new Packery(elem, {
         itemSelector: '#innerbox',
-        gutter: 10
+        gutter: 23
     });
     pckry.getItemElements().forEach(function(itemElem) {
 
@@ -220,18 +226,12 @@ var pop = function(data_id) {
         url: "http://localhost:8081/get_card_notes/" + data_id + "",
         type: "POST",
         success: function(response) {
+          $('.modal-title').text("");
+          $('#para').html("");
             // console.log(response.message[0].take_note);
             $('.modal-title').text(response.message[0].title);
-            $('#para').text(response.message[0].take_note);
-            $(document).ready(function() {
-                $(document).on('click', "#update", (function() {
-                    title = $('.modal-title').html();
-                    note = $('#para').html();
-                    console.log("title", title);
-                    update_card(data_id, title, note);
-                }));
-
-            });
+            $('#para').append(response.message[0].take_note);
+            $("#update").attr('onclick',"update_card('"+ data_id+"')")
             get_card();
 
         },
@@ -240,8 +240,11 @@ var pop = function(data_id) {
         },
     });
 }
-var update_card = function(data_id, title, note) {
-    console.log(obj);
+
+var update_card = function(data_id) {
+    // console.log(obj);
+  var   title = $('.modal-title').html();
+  var   note = $('#para').html();
     var obj = {
         _id: data_id,
         title: title,

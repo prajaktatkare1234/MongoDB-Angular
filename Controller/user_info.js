@@ -7,7 +7,12 @@ router.post('/',function(req,res){
     if(data)
     {
     console.log("in user_info",data);
-      res.send({"user_data":data,"status":true})
+    obj={
+      user_id:data._id,
+      name:data.name,
+      email:data.email
+    }
+      res.send({"user_data":obj,"status":true})
     }
     else
     {
